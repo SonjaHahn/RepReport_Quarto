@@ -40,9 +40,7 @@ library(tidyverse)
 
 ## Research Questions
 
-```{r}
 
-```
 
 ### Graphical Overview
 
