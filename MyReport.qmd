@@ -8,13 +8,15 @@ bibliography: references.bib
 
 ### Libraries
 
-```{r}
+```{r libraries}
 library(tidyverse)
+
 ```
 
 ### Functions
 
-```{r}
+```{r functions}
+compute_interaction <- function(a,b) a*b
 
 ```
 
@@ -31,41 +33,50 @@ The source code of this report can be retrieved
 
 ## Data Import
 
-Note: This is a simulated data set used for teaching purposes based on @spangenberg2005jobr.
+*Note: This is a simulated data set used for teaching purposes based on @spangenberg2005jobr.*
 
-```{r}
+```{r data import}
+data <- read.csv("Data/sim_data.csv")
 
 ```
 
 ## Data Preprocessing 
 
-```{r}
+```{r data preprocessing}
+data$interaction <- compute_interaction(data$iV_Music, data$iV_Scent)
 
 ```
 
 ## Descriptives
 
-```{r}
+```{r Descriptive Statistics}
+table(data$iV_Music, data$iV_Scent) 
 
 ```
 
 ## Research Questions
 
+**Optional.**
 
 
 ### Graphical Overview
 
-```{r}
+```{r Graphs}
+boxplot(dV_Evaluation ~ iV_Music * iV_Scent, data = data)
 
 ```
 
 
-### Analyses 1
+### Analysis 1
 
-```{r}
+```{r First Analysis}
+model <- lm(dV_Evaluation ~ iV_Music * iV_Scent, data = data)
+
+summary(model)
 
 ```
 
+*Probably you will need more chunks for analysis.*
 
 ## Session Info
 
