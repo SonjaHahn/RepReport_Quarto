@@ -20,7 +20,17 @@ library(tidyverse)
 
 ## Download Data
 
+The data is embedded in this report via base64 encoding. 
+You can download it `r xfun::embed_file("data/sim_data.csv", "sim_data.csv", "here")` 
+or from this [github repository](https://github.com/SonjaHahn/RepReport_Quarto).
+
+The source code of this report can be retrieved 
+`r xfun::embed_file("MyReport.qmd", "MyReport.qmd", "here")`.
+
+
 ## Data Import
+
+Note: This is a simulated data set used for teaching purposes based on ...
 
 ```{r}
 
