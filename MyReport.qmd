@@ -1,6 +1,9 @@
 ---
 title: "This is a template for a reproducible report"
+subtitle: "Sandbox project"
 format: html
+editor_options: 
+  chunk_output_type: console
 bibliography: references.bib
 ---
 
@@ -9,6 +12,9 @@ bibliography: references.bib
 ### Libraries
 
 ```{r libraries}
+#| message: false  
+#| results: hide
+
 library(tidyverse)
 
 ```
