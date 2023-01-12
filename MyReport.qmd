@@ -13,21 +13,26 @@ bibliography: references.bib
 
 ## Technical Setting
 
+Hier könnte man überlegen, ob es nötig ist extra Abschnitte dafür anzulegen. Denkbar wäre auch ein setup-Chunk, der die technischen Einstellungen ohne große Sichtbarkeit regelt. Allerdings weiß ich nicht, ob es von dir vielleicht auch genau so gewollt ist? 
+
 ### Libraries
 
-```{r libraries}
+```{r}
+#| label: libraries
 #| message: false  
 #| results: hide
 
 library(tidyverse)
-
 ```
 
 ### Functions
 
-```{r functions}
-compute_interaction <- function(a,b) a*b
+Das schließt an die setup-Überlegungen an. Wäre es hier nicht sinnvoller, die Funktionen in einem extra R-Skript abzuelegen und dann im Setup zu laden? Anders, warum ist es wichtig, dass sie im Report so exponiert auftauchen?
 
+```{r}
+#| label: functions
+
+compute_interaction <- function(a,b) a*b
 ```
 
 
@@ -43,23 +48,28 @@ The source code of this report can be retrieved
 
 ## Data Import
 
-*Note: This is a simulated data set used for teaching purposes based on @spangenberg2005jobr.*
+*Note: This is a simulated data set used for teaching purposes based on @spangenberg2005jobr.* 
 
-```{r data import}
+```{r}
+#| label: data-import
+
 data <- read.csv("Data/sim_data.csv")
-
+# Gibt es einen speziellen Grund, warum du nicht die readr-Funktion nutzt sondern jene von Base R?
 ```
 
 ## Data Preprocessing 
 
-```{r data preprocessing}
-data$interaction <- compute_interaction(data$iV_Music, data$iV_Scent)
+```{r}
+#| label: data-preprocessing
 
+data$interaction <- compute_interaction(data$iV_Music, data$iV_Scent)
 ```
 
 ## Descriptives
 
-```{r Descriptive Statistics}
+```{r}
+#| label: descriptive-statistics
+
 table(data$iV_Music, data$iV_Scent) 
 
 ```
@@ -71,29 +81,32 @@ table(data$iV_Music, data$iV_Scent)
 
 ### Graphical Overview
 
-```{r Graphs}
-boxplot(dV_Evaluation ~ iV_Music * iV_Scent, data = data)
+```{r}
+#| label: graphs
 
+boxplot(dV_Evaluation ~ iV_Music * iV_Scent, data = data)
 ```
 
 
 ### Analysis 1
 
-```{r First Analysis}
+```{r}
+#| label: first-analysis
+
 model <- lm(dV_Evaluation ~ iV_Music * iV_Scent, data = data)
 
 summary(model)
-
 ```
 
-*Probably you will need more chunks for analysis.*
+*Probably you will need more chunks for analysis.* 
 
 ## Session Info
 
 ```{r}
+#| label: session-info
+
 sI <- sessionInfo(package = NULL)
 print(sI)
 
 # osVersion
-
 ```
